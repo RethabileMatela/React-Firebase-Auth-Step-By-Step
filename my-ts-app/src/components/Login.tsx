@@ -2,8 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 // 6) to verify that our form is beeing tracked install and import devtool component
 import { DevTool } from "@hookform/devtools";
-// 1) define the type of form data being sumitted
-// create the form value type
+
 type FormValues = {
   email: string;
   password: string;
