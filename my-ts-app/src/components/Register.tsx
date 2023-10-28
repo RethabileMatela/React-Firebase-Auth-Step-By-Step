@@ -1,6 +1,8 @@
 import React from "react";
 // 2) install and import rhf to help manage forms with ease
 import { useForm } from "react-hook-form";
+// 6) to verify that our form is beeing tracked install and import devtool component
+import { DevTool } from "@hookform/devtools";
 
 // 3) define the type of form data being sumitted by creating the form value type
 type FormValues = {
@@ -26,8 +28,8 @@ function Register() {
         <input
           type="text"
           id="email"
-          // 5) use register method to allow rhf to start tracking the state of form controls by adding props 
-          // on input tags eg email = {email}, simplify by spreading the register method on the form control 
+          // 5) use register method to allow rhf to start tracking the state of form controls by adding props
+          // on input tags eg email = {email}, simplify by spreading the register method on the form control
           {...register("email", { required: "email   is required" })}
         />
 
@@ -39,13 +41,20 @@ function Register() {
         />
 
         <label htmlFor="confirmPassword">CONFIRM PASSWORD</label>
-        <input 
-        type="text" 
-        id="confirmPassword"
-        {...register("confirmPassword", { required: "confirmPassword   is required" })} 
+        <input
+          type="text"
+          id="confirmPassword"
+          {...register("confirmPassword", {
+            required: "confirmPassword   is required",
+          })}
         />
         <button>Submit</button>
       </form>
+      {/* 7) invoke devtool after closing form tag
+      -touched = field interacted with 
+      -dirty = field value changed 
+      rhf tracks values without rerendering them, follows uncontrolled inputs behaviour*/}
+      <DevTool control={control} />
     </div>
   );
 }

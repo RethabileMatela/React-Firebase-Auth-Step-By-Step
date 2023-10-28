@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-// 6) to verify that our form is beeing tracked install and import devtool component
 import { DevTool } from "@hookform/devtools";
 
 type FormValues = {
@@ -16,7 +15,7 @@ function Login() {
   const { register, control, handleSubmit, formState } = form;
   // 19) destructure errors object, which contains individual field errors
 
-  const { errors } = formState;
+  const { errors } = formState;   
 
   // 8) define a function that should be called when the submit button is pressed
   // 11) onsubmit automatically receives the form  data which we can  log into the console
@@ -36,13 +35,10 @@ function Login() {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <label htmlFor="email">EMAIL</label>
 
-        {/* 4) add props on the email input email={email}..
-         - this allows rhf to start tracking the state of the form control
-         - simplify registering a field by directly spreading the register method on the form control
-         
+        {/*          
          16) add required field validation to the username field 
              a) pass an object as a second argument to the register function 
-             b) specify required as the key and the error message as its value */}
+             b) specify required as the key and the error message as its value  */}
         <input
           type="text"
           id="email"
