@@ -9,12 +9,7 @@ type FormValues = {
 };
 
 function Login() {
-  // 2) a hook is essentially a function, so lets call it inside our component
-  // this hook returns an object called form
-  // Add the FormValues type when invoking useForm Hook so that the form values match the values being submitted
   const form = useForm<FormValues>();
-  // 3) to help manage form state rhf provides a method called Register that can be accessed on the form object, lets destructure it
-  // this method allows us to register a form control with rhf
   // 7) -then associate the devtool comp with the form you are tracking using control object you can destructure from form
   // 9) from the form object destructure a function called handleSubmit
 
@@ -59,14 +54,15 @@ function Login() {
         {/* 17) Pattern validation set key to pattern and value to an object  */}
 
         <label htmlFor="password">PASSWORD</label>
-        <input 
-        type="text" 
-        id="password" 
-        {...register("password", {required: "password   is required" })} />
+        <input
+          type="text"
+          id="password"
+          {...register("password", { required: "password   is required" })}
+        />
 
         <button>Submit</button>
       </form>
-         {/* 7) invoke devtools after the closing form tag 
+      {/* 7) invoke devtools after the closing form tag 
       -then associate the devtool comp with the form you are tracking using control object you can destructure from form 
       - specify a control prop and assign the control object as value
       -touched = whether the field has been interacted with 
