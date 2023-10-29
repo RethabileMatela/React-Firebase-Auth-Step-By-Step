@@ -57,7 +57,7 @@ function Register() {
 
               // 13) Pattern validation set key to pattern and value to an object
               pattern: {
-                value: /^[0-9]{10}$/,
+                value: /^\S+@\S+\.\S+$/,
                 message: "email must be in correct format",
               },
             })}
