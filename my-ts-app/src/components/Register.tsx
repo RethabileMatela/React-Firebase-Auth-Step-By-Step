@@ -33,25 +33,26 @@ function Register() {
   };
   return (
     <div>
+
       {/* 1) create form with labels and form fields */}
-      {/*render count value divided by 2 because react strict mode renders components 
-      twice during development in order to detect any problems with the code and warn us about them  */}
-
-      {/* 10) listen to the form onsubmit event and assign handleSubmit as a handler
-      to handleSubmit pass onsubmit as argument 
-
-      15) add noValidate attribute to the form element , prevents default browser validation */}
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      {/* 8) listen to the form onsubmit event and assign handleSubmit as a handler
+          - to handleSubmit pass onsubmit as argument */}
+      <form onSubmit={handleSubmit(onSubmit)}
+        // 9) add noValidate attribute to the form element , prevents default browser validation 
+        noValidate>
         <label htmlFor="email">EMAIL</label>
         <input
           type="text"
           id="email"
-          // 5) use register method to allow rhf to start tracking the state of form controls by adding props
-          // on input tags eg email = {email}, simplify by spreading the register method on the form control
           // 16) add required field validation to the email field 
           //  a) pass an object as a second argument to the register function 
           //  b) specify required as the key and the error message as its value
-          {...register("email", { required: "email   is required" })}
+          {
+               // 10) use register method to allow rhf to start tracking the state of form controls by adding props
+               // on input tags eg email = {email}, simplify by spreading the register method on the form control
+            ...register
+            ("email", 
+            { required: "email   is required" })}
         />
         {/* 20 ) access field errors and display them below the corresponding element ?. = optional chaining  
         optional chaining is necessary since the error mesage for a field might never exist if no validation rules fail*/}
