@@ -17,18 +17,17 @@ function Register() {
   const submittedFormValues = useForm<userProfile>();
 
   // 5) create submittedFormValue object to destructure form values register, control, handleSubmit and formState
-  // register method from rhf registers and manages form values
-  // control object links devtool component to the form 
-  // handleSubmit is a react form onSubmit handler
+  // - register method from rhf registers and manages form values
+  // - control object links devtool component to the form 
+  // - handleSubmit is a react form onSubmit handler
+  // - formState contains errors object 
   const { register, control, handleSubmit, formState } = submittedFormValues;
 
-  // 19) destructure errors object, which contains individual field errors
+  // 6) destructure errors object, which contains individual field errors
   const { errors } = formState;
 
-  // 8) define a function that should be called when the submit button is pressed
-  //  onsubmit automatically receives the form  data which we can  log into the console
-  //  now data is of type formValues
-
+  // 7) define onsubmit function that should be called when the submit button is pressed
+  //  onsubmit automatically receives the form  data of type userProfile which we can  log into the console
   const onSubmit = (data: userProfile) => {
     console.log("form submitted", data);
   };
