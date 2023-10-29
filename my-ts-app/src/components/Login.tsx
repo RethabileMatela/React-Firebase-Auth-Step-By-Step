@@ -9,12 +9,8 @@ type FormValues = {
 
 function Login() {
   const form = useForm<FormValues>();
-
   const { register, control, handleSubmit, formState } = form;
-  // 19) destructure errors object, which contains individual field errors
-
   const { errors } = formState;
-
   const onSubmit = (data: FormValues) => {
     console.log("form submitted", data);
   };
@@ -25,7 +21,14 @@ function Login() {
         <input
           type="text"
           id="email"
-          {...register("email", { required: "email   is required" })}
+          {...register("email", {
+            required: "email   is required",
+            pattern: {
+              value: /^[0-9]{10}$/,
+              message: "email must be in correct format",
+            },
+          })}
+
         />
         <p>{errors.email?.message}</p>
         <label htmlFor="password">PASSWORD</label>
