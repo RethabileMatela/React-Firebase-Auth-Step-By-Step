@@ -44,17 +44,19 @@ function Register() {
         <input
           type="text"
           id="email"
-          // 16) add required field validation to the email field 
           //  a) pass an object as a second argument to the register function 
           //  b) specify required as the key and the error message as its value
           {
-               // 10) use register method to allow rhf to start tracking the state of form controls by adding props
-               // on input tags eg email = {email}, simplify by spreading the register method on the form control
-            ...register
-            ("email", 
-            { required: "email   is required" })}
+          // 10) use register method to allow rhf to start tracking the state of form controls by adding props
+          // on input tags eg email = {email}, simplify by spreading the register method on the form control
+          ...register(
+            "email",
+            {
+              // 11 ) add required field validation to the email field 
+              required: "email   is required"
+            })}
         />
-        {/* 20 ) access field errors and display them below the corresponding element ?. = optional chaining  
+        {/* 12 ) access field errors and display them below the corresponding element ?. = optional chaining  
         optional chaining is necessary since the error mesage for a field might never exist if no validation rules fail*/}
         <p>{errors.email?.message}</p>
         {/* 17) Pattern validation set key to pattern and value to an object  */}
