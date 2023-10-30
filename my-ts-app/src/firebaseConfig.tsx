@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 // a4) initialize getfirestore 
 import { getFirestore } from "firebase/firestore";
+// r1) to use authentication import getAuth from firebase 
+import { getAuth } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,8 +20,10 @@ const firebaseConfig = {
   measurementId: "G-5PCFD23X3P"
 };
 
-// a3) Initialize Firebase
+// a3) Initialize Firebase, connection between firebase and our project 
 const app = initializeApp(firebaseConfig);
 
 // a5) Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app)
+// r2) Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
