@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
 // a4) define the type of form data being sumitted by creating the user profile object
-type userProfile = {
+export type userProfile = {
   email: string;
   password: string;
   confirmPassword: string;
@@ -13,7 +13,7 @@ type userProfile = {
 
 function Register() {
 
-  // r3) get whatever the user is writing in the input using usestate
+  // a15) get whatever the user is writing in the input using usestate
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -34,7 +34,14 @@ function Register() {
 
   // a8) define onsubmit function that should be called when the submit button is pressed
   //  onsubmit automatically receives the form  data of type userProfile which we can  log into the console
-  const onSubmit = (data: userProfile) => {
+  const onSubmit = async (data: userProfile) => {
+   // r5) add registerWithEmailAndPassword method to on form submission
+    try {
+      await registerWithEmailAndPassword(data);
+    } catch (error: any) {
+      console.error(error);
+      alert(error.message);
+    }
     console.log("form submitted", data);
   };
   return (
@@ -67,7 +74,7 @@ function Register() {
                 message: "email must be in correct format",
               },
             })}
-          // r4) register changes to the email state  using onChange property
+          // a16) register changes to the email state  using onChange property
           onChange={(e) => setEmail(e.target.value)}
         />
         {/* a14 ) access field errors and display them below the corresponding element 
@@ -96,7 +103,7 @@ function Register() {
         />
         <p>{errors.confirmPassword?.message}</p>
 
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
       {/* a3.1) invoke devtool after closing form tag
       -touched = field interacted with 
@@ -108,3 +115,7 @@ function Register() {
 }
 
 export default Register;
+function registerWithEmailAndPassword(data: userProfile) {
+  throw new Error("Function not implemented.");
+}
+
