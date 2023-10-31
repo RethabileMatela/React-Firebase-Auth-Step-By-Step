@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // a2) install and import rhf to help manage forms with ease
 import { useForm } from "react-hook-form";
 // a3.2) to verify that our form is beeing tracked install and import devtool component
 import { DevTool } from "@hookform/devtools";
-
+import { auth } from "../firebaseConfig";
 // a4) define the type of form data being sumitted by creating the user profile object
 export type userProfile = {
   email: string;
@@ -31,19 +31,22 @@ function Register() {
 
   //a7) destructure errors object, which contains individual field errors
   const { errors } = formState;
-
   // a8) define onsubmit function that should be called when the submit button is pressed
   //  onsubmit automatically receives the form  data of type userProfile which we can  log into the console
+
+  useEffect(() => {
+  });
+
   const onSubmit = async (data: userProfile) => {
-   // r5) add registerWithEmailAndPassword method to on form submission
     try {
+      // r5) add registerWithEmailAndPassword method 
       await registerWithEmailAndPassword(data);
     } catch (error: any) {
       console.error(error);
       alert(error.message);
-    }
-    console.log("form submitted", data);
+    }
   };
+
   return (
     <div>
 
