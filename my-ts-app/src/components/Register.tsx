@@ -33,7 +33,7 @@ function Register() {
   const { errors } = formState;
   // a8) define onsubmit function that should be called when the submit button is pressed
   //  onsubmit automatically receives the form  data of type userProfile which we can  log into the console
-
+//test
   useEffect(() => {
   });
 
