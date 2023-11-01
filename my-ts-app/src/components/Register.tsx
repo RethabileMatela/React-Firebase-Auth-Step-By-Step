@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 // a3.2) to verify that our form is beeing tracked install and import devtool component
 import { DevTool } from "@hookform/devtools";
-import { auth } from "../firebaseConfig";
+import { auth, registerWithEmailAndPassword } from "../firebase";
 // a4) define the type of form data being sumitted by creating the user profile object
 export type userProfile = {
   email: string;
@@ -41,6 +41,8 @@ function Register() {
     try {
       // r5) add registerWithEmailAndPassword method 
       await registerWithEmailAndPassword(data);
+      console.log(data);
+      
     } catch (error: any) {
       console.error(error);
       alert(error.message);
@@ -118,7 +120,5 @@ function Register() {
 }
 
 export default Register;
-function registerWithEmailAndPassword(data: userProfile) {
-  throw new Error("Function not implemented.");
-}
+
 

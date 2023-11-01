@@ -12,7 +12,7 @@ function Login() {
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
   const onSubmit = (data: FormValues) => {
-    console.log("form submitted", data);
+    // console.log("form submitted", data);
   };
   return (
     <div>
